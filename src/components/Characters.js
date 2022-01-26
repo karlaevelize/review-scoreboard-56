@@ -13,8 +13,9 @@ export default function Characters() {
   //Step 6. Declare a variable with local state to hold the data you fetched, ex: const [ characters, setCharacters ] = useState()
   //Step 7. Put the data in local state using the setter, ex:  setCharacters(response.data.rows)
   //STep 8. Map over the data
+  
 
-  async function getData(){
+  const getData = async () => {
     const response = await axios.get("https://hp-assessment-api.herokuapp.com/got/characters")
     console.log("response", response)
     setCharacters(response.data.rows)

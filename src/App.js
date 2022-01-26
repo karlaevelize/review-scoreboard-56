@@ -1,10 +1,12 @@
 import './App.css';
 import Characters from './components/Characters';
+import Scoreboard from './components/Scoreboard';
 
 function App() {
   return (
-    <div className="App">
-      <Characters/>
+    <div>
+      {/* <Characters/> */}
+      <Scoreboard/>
     </div>
   );
 }
