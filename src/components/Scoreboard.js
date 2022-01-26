@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Player from "./Player"
+import AddPlayerForm from "./AddPlayerForm"
 
 const compareScore = (playerA, playerB) => {
   return playerB.score - playerA.score
@@ -60,6 +61,17 @@ export default function Scoreboard(){
     setPlayers(newPlayersArray)
   }
 
+  //Write a function to add a player to the array
+  const addPlayer = (name) => {
+    console.log("name", name)
+    //1. Define what is a new player
+    const newPlayer = { id: players.length + 1, name: name, score: 0 } 
+    //2. Put the new player in the array
+    const newPlayersArray = [...players, newPlayer]
+    //3. Put new player in local state
+    setPlayers(newPlayersArray)
+  }
+
   return(
     <div>
       <h1>Scoreboard</h1>
@@ -72,9 +84,16 @@ export default function Scoreboard(){
         ? "Loading"
         : sortedPlayers.map(player => {
           return (
-            <Player key={player.id} name={player.name} score={player.score} incrementScore={incrementScore} id={player.id}/>
+            <Player 
+              key={player.id} 
+              name={player.name} 
+              score={player.score} 
+              id={player.id}
+              incrementScore={incrementScore}
+               />
           )
         })}
+      <AddPlayerForm addPlayer={addPlayer}/>
     </div>
   )
 }
